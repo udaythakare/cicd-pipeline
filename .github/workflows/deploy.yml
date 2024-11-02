@@ -29,7 +29,7 @@ jobs:
           chmod 600 key.pem
           ssh -tt -o StrictHostKeyChecking=no -i key.pem $USERNAME@$HOST << 'EOF'
             pm2 stop all
-            cd /path/to/your/app
+            cd ~/projects/cicd-pipeline
             git pull origin main
             npm install
             npm run build
