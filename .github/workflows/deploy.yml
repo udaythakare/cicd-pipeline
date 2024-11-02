@@ -27,14 +27,15 @@ jobs:
         run: |
           echo "$KEY" > key.pem
           chmod 600 key.pem
-          ssh -o StrictHostKeyChecking=no -i key.pem $USERNAME@$HOST << 'EOF'
-            pm2 stop allx
+          ssh -tt -o StrictHostKeyChecking=no -i key.pem $USERNAME@$HOST << 'EOF'
+            pm2 stop all
             cd /path/to/your/app
             git pull origin main
             npm install
             npm run build
             pm2 start npm --name "next-app" -- start
           EOF
-        # Clean up the SSH key
+
+      # Clean up the SSH key
       - name: Remove key
         run: rm -f key.pem
