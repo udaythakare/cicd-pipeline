@@ -6,6 +6,8 @@ export default function Home() {
       hello this is cicd pipeline
       ok updated
       now is the time
+      wow
+
     </div>
   );
 }
